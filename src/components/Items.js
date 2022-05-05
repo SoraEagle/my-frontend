@@ -47,14 +47,14 @@ function Items(){
 
               <form onSubmit={handleSubmit}>
                 <div><label><b>Name: 
-                  <input type="text" name="name" value="name" onChange={handleNameChange} />
+                  <input type="text" name="name" placeholder="name" onChange={handleNameChange} />
                 </b></label></div>
                 <div><label><b>Trip: 
-                  <input type="text" name="trip" value="trip" onChange={handleTripChange} />
+                  <input type="text" name="trip" placeholder="trip" onChange={handleTripChange} />
                 </b></label></div>
                 <button type="submit">Submit Item</button>
               </form>
-              
+
               <h2 style={{
                 borderBottom: "2px solid black",
                 marginBottom: "12px",
