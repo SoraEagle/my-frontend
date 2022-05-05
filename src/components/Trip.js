@@ -1,6 +1,8 @@
-import React, {useContext} from 'react';
+import React, {useContext} from "react";
+import {TripsContext} from "./context/MyTrips";
 
 function Trip({trip, onDeleteTrip}){
+    // const {trip, setTrip} = useContext(TripsContext);
     
     function deleteTrip(){
         fetch(`http://localhost:9292/trips/${trip.id}`, { // DELETE fetch request.
@@ -19,10 +21,12 @@ function Trip({trip, onDeleteTrip}){
             borderBottom: "2px solid black",
             paddingBottom: "10px",
             marginBottom: "12px"
-          }}>
-              <p>#{trip.name}</p>
-              <button>Update</button>
-              <button onClick={deleteTrip}>Delete</button>
+        }}>
+              <div>
+                <h2>{trip.name}</h2>
+                <button>Update</button>
+                <button onClick={deleteTrip}>Delete</button>
+              </div>
         </div>
     );
 }

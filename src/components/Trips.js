@@ -24,6 +24,8 @@ function Trips(){
       const updatedTrips = trips.filter((trip) => trip.id !== deletedTrip.id);
       setTrips(updatedTrips);
     }
+
+    if (!Trip) return <h2>Loading trip data...</h2>;
     
     if(Trip.length === 0) return(
         <div>
