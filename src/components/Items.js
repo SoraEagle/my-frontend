@@ -10,3 +10,5 @@ function Items(){
           </div>);
           else console.log("Items: ", Items);
 }
+
+export default Items;

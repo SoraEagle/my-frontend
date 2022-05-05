@@ -24,8 +24,8 @@ function App(){
       <TripsProvider><ItemsProvider>
         <NavBar />
         <Routes>
-          {/* <Route path="/trips" element={<Trips />}></Route> */}
-          {/* <Route path="/items" element={<Items />}></Route> */}
+          <Route path="/trips" element={<Trips />}></Route>
+          <Route path="/items" element={<Items />}></Route>
           {/* <Route path="/" element={<Home />}></Route> */}
         </Routes>
       </ItemsProvider></TripsProvider>
