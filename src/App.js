@@ -5,7 +5,7 @@ import {Routes, Route} from "react-router-dom";
 import {TripsProvider} from './components/context/MyTrips';
 import {ItemsProvider} from './components/context/MyItems';
 import NavBar from './components/NavBar';
-// import Home from './components/Home';
+import Home from './components/Home';
 import Trips from './components/Trips';
 import Items from './components/Items';
 
@@ -26,7 +26,7 @@ function App(){
         <Routes>
           <Route path="/trips" element={<Trips />}></Route>
           <Route path="/items" element={<Items />}></Route>
-          {/* <Route path="/" element={<Home />}></Route> */}
+          <Route exact path="/" element={<Home />}></Route>
         </Routes>
       </ItemsProvider></TripsProvider>
 
