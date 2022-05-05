@@ -23,13 +23,13 @@ function NavBar(){
             marginBottom: "12px",
             height: "10vh" //Keeps height of navbar to 10% of browser window's height.
         }}>
-            <NavLink style={linkStyles} to="/" exact>
+            <NavLink style={linkStyles} to="/">
                 Home Page
             </NavLink>
-            <NavLink style={linkStyles} to="/trips" exact>
+            <NavLink style={linkStyles} to="/trips">
                 My Trips
             </NavLink>
-            <NavLink style={linkStyles} to="/items" exact>
+            <NavLink style={linkStyles} to="/items">
                 My Items
             </NavLink>
         </div>
