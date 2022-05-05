@@ -1,3 +1,5 @@
+import React, {useContext} from 'react';
+
 function Trip({trip, onDeleteTrip}){
     
     function deleteTrip(){

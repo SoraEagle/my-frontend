@@ -1,5 +1,5 @@
 import React, {useContext, useState} from "react";
-import {TripsContext} from "./context/Trips";
+import {TripsContext} from "./context/MyTrips";
 import Trip from "./Trip";
 
 function Trips(){
