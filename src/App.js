@@ -2,6 +2,9 @@
 import './App.css';
 import React from "react";
 import {Routes, Route, Link, Switch} from "react-router-dom";
+import { TripsProvider } from './components/context/MyTrips';
+import { ItemsProvider } from './components/context/MyItems';
+import NavBar from './components/NavBar';
 // import {TripsProvider} from './components/context/MyTrips';
 // import {ItemsProvider} from './components/context/MyItems';
 // import NavBar from './components/NavBar';
@@ -20,6 +23,13 @@ function App(){
       height: "100vh",
       textAlign: "center"
     }}>
+
+      <TripsProvider><ItemsProvider>
+        <NavBar />
+        <Routes>
+          {/*  */}
+        </Routes>
+      </ItemsProvider></TripsProvider>
 
       <footer id="footer" style={{
           backgroundColor: "coral",
