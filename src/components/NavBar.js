@@ -12,7 +12,7 @@ const linkStyles = {
     color: "white"
   };
 
-// Routes: Home, Trips, Items, ...
+// Routes: Trips, Trip, Items, Item, ...
 function NavBar(){
     return(
         <div
@@ -23,9 +23,9 @@ function NavBar(){
             marginBottom: "12px",
             height: "10vh" //Keeps height of navbar to 10% of browser window's height.
         }}>
-            <NavLink style={linkStyles} to="/">
+            {/* <NavLink style={linkStyles} to="/">
                 Home Page
-            </NavLink>
+            </NavLink> */}
             <NavLink style={linkStyles} to="/trips">
                 My Trips
             </NavLink>

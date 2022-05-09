@@ -26,3 +26,7 @@ code {
   bottom: 0;
   width: 100%;
 }
+
+#left {
+  text-align: left;
+}

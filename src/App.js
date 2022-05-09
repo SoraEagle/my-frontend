@@ -26,7 +26,7 @@ function App(){
         <Routes>
           <Route path="/trips" element={<Trips />}></Route>
           <Route path="/items" element={<Items />}></Route>
-          <Route exact path="/" element={<Home />}></Route>
+          <Route exact path="/" element={<Trips />}></Route>
         </Routes>
       </ItemsProvider></TripsProvider>
 
@@ -39,6 +39,7 @@ function App(){
           paddingTop: "10px",
           textAlign: "center"
         }}>
+          <p id="left"><a href="#">Top of Page</a></p>
           <p>@2022 Ruby Faker Inc.</p>
           <p>All rights reserved.</p>
         </footer>
