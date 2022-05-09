@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Routes, Route} from "react-router-dom";
 import {TripsProvider} from './components/context/MyTrips';
 import {ItemsProvider} from './components/context/MyItems';
@@ -12,6 +12,17 @@ import Items from './components/Items';
 function App(){
   // Have a Home page?
   // Add useStates?
+  const [trips, setTrips] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:9292/trips")
+      .then((r) => r.json())
+      .then((trips) => setTrips(trips));
+  }, []);
+
+  function handleAddTrip(newTrip){
+    setTrips([...trips, newTrip]);
+  }
 
   return(
     <div className="App"
@@ -24,7 +35,7 @@ function App(){
       <TripsProvider><ItemsProvider>
         <NavBar />
         <Routes>
-          <Route path="/trips" element={<Trips />}></Route>
+          <Route path="/trips" element={<Trips onAddTrip={handleAddTrip} />}></Route>
           <Route path="/items" element={<Items />}></Route>
           <Route exact path="/" element={<Trips />}></Route>
         </Routes>

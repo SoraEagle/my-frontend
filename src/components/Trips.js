@@ -2,22 +2,26 @@ import React, {useContext, useState} from "react";
 import {TripsContext} from "./context/MyTrips";
 import Trip from "./Trip";
 
-function Trips(){
+function Trips({onAddTrip}){
     const {trips, setTrips} = useContext(TripsContext);
     const [name, setName] = useState('');
 
-    function handleNameChange(e){
-      setName(e.target.value);
-    }
-
-    // function handleTripChange(e){
-    //   setTrip(e.target.value);
-    // }
-
     function handleSubmit(e){
       e.preventDefault();
-      // fetch("http://localhost:9292/trips",
-      // )
+      fetch("http://localhost:9292/trips/${id}", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: name,
+        }),
+      })
+      .then((r) => r.json())
+      .then((newTrip) => {
+        onAddTrip(newTrip);
+        setName("");
+      });
     }
 
     function onDeleteTrip(deletedTrip){
@@ -25,26 +29,26 @@ function Trips(){
       setTrips(updatedTrips);
     }
 
-    if (!Trip) return <h2>Loading trip data...</h2>;
+    if(!Trip) return <h2>Loading trip data...</h2>;
     
     if(Trip.length === 0) return(
         <div>
-          <p>You have no items for your trips!</p>
+          <p>You have no trips!</p>
           <img src="https://miro.medium.com/max/1280/1*-Nr0OP_Nu7b2NPrcgJ1SuA.png" alt="null"/>
           </div>);
           else console.log("Trips: ", Trips);
 
           return(
             <div id="trips">
-              <h2 style={{
-                borderBottom: "2px solid black"
-              }}>
+              <h2 style={{borderBottom: "2px solid black"}}>
                 Make a Trip:
               </h2>
 
               <form onSubmit={handleSubmit}>
                 <div><label><b>Name: 
-                  <input type="text" name="name" placeholder="name" onChange={handleNameChange} />
+                  <input type="text" name="name"
+                  autoComplete="off" placeholder="name"
+                  value={name} onChange={(e) => setName(e.target.value)} /> {/* Removes need for "function handleNameChange(e){}" */}
                 </b></label></div>
                 <button type="submit">Submit Trip</button>
               </form>

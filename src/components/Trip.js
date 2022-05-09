@@ -13,7 +13,7 @@ function Trip({trip, onDeleteTrip}){
     }
 
     function updateTrip(){
-        // 
+        // Select specific Trip(use the trip.id), override the <div> into <form> tags; Override <h2> tags into <input> tags...
     }
 
     return(
