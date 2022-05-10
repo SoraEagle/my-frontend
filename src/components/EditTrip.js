@@ -1,11 +1,18 @@
 import React, {useState} from 'react';
 
-function EditTrip(){
-    // 
+function EditTrip(trip){
+    const [tripName, setTripName] = useState(trip.name);
+
+    function handleFormSubmit(e){
+        e.preventDefault();
+
+        // 
+    }
 
     return(
-        <form>
-            {/*  */}
+        <form onSubmit={handleFormSubmit}>
+            <input type="text" name="name" />
+            <input />
         </form>
     );
 }

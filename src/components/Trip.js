@@ -1,8 +1,10 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
+import EditTrip from "./EditTrip";
 import {TripsContext} from "./context/MyTrips";
 
 function Trip({trip, onDeleteTrip}){
     // const {trip, setTrip} = useContext(TripsContext);
+    const [isEditing, setIsEditing] = useState(false);
     
     function deleteTrip(){
         fetch(`http://localhost:9292/trips/${trip.id}`, { // DELETE fetch request.
@@ -24,7 +26,9 @@ function Trip({trip, onDeleteTrip}){
         }}>
               <div>
                 <h2>{trip.name}</h2>
-                <button>Update</button>
+                <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
+                    Update
+                </button>
                 <button onClick={deleteTrip}>Delete</button>
               </div>
         </div>
