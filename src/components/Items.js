@@ -1,5 +1,5 @@
 import React, {useContext, useState} from "react";
-import {ItemsContext} from "./context/MyItems";
+import {ItemsContext} from "./context/myItems";
 import Item from "./Item";
 
 function Items(){

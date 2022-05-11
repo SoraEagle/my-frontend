@@ -1,28 +1,10 @@
 import React, {useContext, useState} from "react";
-import {TripsContext} from "./context/MyTrips";
+import {TripsContext} from "./context/myTrips";
 import Trip from "./Trip";
+import NewTrip from "./NewTrip";
 
 function Trips({onAddTrip}){
     const {trips, setTrips} = useContext(TripsContext);
-    const [name, setName] = useState('');
-
-    function handleSubmit(e){
-      e.preventDefault();
-      fetch("http://localhost:9292/trips/${id}", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: name,
-        }),
-      })
-      .then((r) => r.json())
-      .then((newTrip) => {
-        onAddTrip(newTrip);
-      });
-      setName("");
-    }
 
     function onDeleteTrip(deletedTrip){
       const updatedTrips = trips.filter((trip) => trip.id !== deletedTrip.id);
@@ -44,14 +26,7 @@ function Trips({onAddTrip}){
                 Make a Trip:
               </h2>
 
-              <form onSubmit={handleSubmit}>
-                <div><label><b>Name: 
-                  <input type="text" name="name"
-                  autoComplete="off" placeholder="name"
-                  value={name} onChange={(e) => setName(e.target.value)} /> {/* Removes need for "function handleNameChange(e){}" */}
-                </b></label></div>
-                <button type="submit">Submit Trip</button>
-              </form>
+              <NewTrip onAddTrip={onAddTrip} trips={trips} setTrips={setTrips} />
 
               <h2 style={{
                 borderBottom: "2px solid black",
