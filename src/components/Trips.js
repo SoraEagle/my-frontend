@@ -20,8 +20,8 @@ function Trips({onAddTrip}){
       .then((r) => r.json())
       .then((newTrip) => {
         onAddTrip(newTrip);
-        setName("");
       });
+      setName("");
     }
 
     function onDeleteTrip(deletedTrip){
@@ -36,7 +36,7 @@ function Trips({onAddTrip}){
           <p>You have no trips!</p>
           <img src="https://miro.medium.com/max/1280/1*-Nr0OP_Nu7b2NPrcgJ1SuA.png" alt="null"/>
           </div>);
-          else console.log("Trips: ", Trips);
+          else console.log("Trips: ", trips);
 
           return(
             <div id="trips">
