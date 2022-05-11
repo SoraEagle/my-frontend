@@ -1,10 +1,11 @@
 import React, {useContext, useState} from "react";
 import EditTrip from "./EditTrip";
-import {TripsContext} from "./context/MyTrips";
 
-function Trip({trip, onDeleteTrip}){
+function Trip({trip, onDeleteTrip, onUpdateTrip}){
     // const {trip, setTrip} = useContext(TripsContext);
     const [isEditing, setIsEditing] = useState(false);
+
+    const {id, name} = trip;
     
     function deleteTrip(){
         fetch(`http://localhost:9292/trips/${trip.id}`, { // DELETE fetch request.
@@ -14,8 +15,10 @@ function Trip({trip, onDeleteTrip}){
     .then(() => onDeleteTrip(trip)); // Invoke the onDeleteItem function with this fetch request.
     }
 
-    function updateTrip(){
+    function handleUpdateTrip(updatedName){
         // Select specific Trip(use the trip.id), override the <div> into <form> tags; Override <h2> tags into <input> tags...
+        setIsEditing(false);
+        onUpdateTrip(updatedName);
     }
 
     return(
@@ -25,7 +28,15 @@ function Trip({trip, onDeleteTrip}){
             marginBottom: "12px"
         }}>
               <div>
-                <h2>{trip.name}</h2>
+              {isEditing ? (
+        <EditTrip
+          id={trip.id}
+          name={name}
+          onUpdateTrip={handleUpdateTrip}
+        />
+      ) : (
+        <h2>{trip.name}</h2>
+      )}
                 <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
                     Update
                 </button>
