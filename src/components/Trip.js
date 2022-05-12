@@ -1,12 +1,11 @@
 import React, {useContext, useState} from "react";
+import {TripsContext} from "./context/myTrips";
 import EditTrip from "./EditTrip";
 
-function Trip({trip, onDeleteTrip, onUpdateTrip}){
-    // const {trip, setTrip} = useContext(TripsContext);
+function Trip({trip}){
+    const {trips, setTrips} = useContext(TripsContext);
     const [isEditing, setIsEditing] = useState(false);
 
-    const {id, name} = trip;
-    
     function deleteTrip(){
         fetch(`http://localhost:9292/trips/${trip.id}`, { // DELETE fetch request.
         method: "DELETE",
@@ -15,10 +14,16 @@ function Trip({trip, onDeleteTrip, onUpdateTrip}){
     .then(() => onDeleteTrip(trip)); // Invoke the onDeleteItem function with this fetch request.
     }
 
-    function handleUpdateTrip(updatedName){
-        // Select specific Trip(use the trip.id), override the <div> into <form> tags; Override <h2> tags into <input> tags...
+    function onDeleteTrip(deletedTrip){
+      const updatedTrips = trips.filter((trip) => trip.id !== deletedTrip.id);
+      setTrips(updatedTrips);
+    }
+
+    function handleUpdateTrip(updatedTrip){
+        // Select specific Trip(use the trip.id) when clicking the Update button, override2 <h2> into <input> tags, and vice versa...
         setIsEditing(false);
-        onUpdateTrip(updatedName);
+        const updatedTrips = trips.map((trip) => trip.id === updatedTrip.id ? updatedTrip : trip)
+       setTrips(updatedTrips); // update the Array
     }
 
     return(
@@ -30,8 +35,7 @@ function Trip({trip, onDeleteTrip, onUpdateTrip}){
               <div>
               {isEditing ? (
         <EditTrip
-          id={trip.id}
-          name={name}
+          trip={trip}
           onUpdateTrip={handleUpdateTrip}
         />
       ) : (
