@@ -1,12 +1,10 @@
-import React, {useContext, useState} from "react";
+import React, {useContext} from "react";
 import {TripsContext} from "./context/myTrips";
 import Trip from "./Trip";
 import NewTrip from "./NewTrip";
 
 function Trips({onAddTrip}){
     const {trips, setTrips} = useContext(TripsContext);
-
-    if(!trips) return <h2>Loading trip data...</h2>;
     
     if(trips.length === 0) return(
         <div>
@@ -30,9 +28,10 @@ function Trips({onAddTrip}){
               }}>
                 My Trips:
               </h2>
-              {trips.map((trip) => {
-                return <h5 key={trip.id}><Trip trip={trip} /></h5>
-              })}
+
+              {trips? (trips.map((trip) => {return <h5 key={trip.id}><Trip trip={trip} /></h5>})
+              ) : (
+              <h2>Loading trip data...</h2>)}
             </div> 
           );
 }
