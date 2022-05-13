@@ -9,7 +9,6 @@ function NewTrip(){
         id: (trips.id),
         name: name
     }
-    console.log("newTrip: ", newTrip);
 
     function handleSubmit(e){
         e.preventDefault();

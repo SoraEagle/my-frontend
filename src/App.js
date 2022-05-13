@@ -9,7 +9,6 @@ import Trips from './components/Trips';
 import Items from './components/Items';
 
 function App(){
-  // Have a Home page?
   // useEffect(() => {
   //   fetch("http://localhost:9292/trips")
   //     .then((r) => r.json())
@@ -17,7 +16,7 @@ function App(){
   // }, []);
 
   return(
-    <div className="App"
+    <div className="App" id='scroll'
     style={{
       backgroundColor: "aqua",
       height: "100vh",

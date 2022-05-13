@@ -2,15 +2,17 @@ import React, {useContext, useState} from 'react';
 import { ItemsContext } from './context/myItems';
 import {TripsContext} from "./context/myTrips";
 
-function NewItem({onAddItem}){
-    const {items, setItems} = useContext(TripsContext);
+function NewItem({onAddItem, items, setItems}){
+    const {trips, setTrips} = useContext(TripsContext);
+    const [trip, setTrip] = useState('');
     const [name, setName] = useState('');
 
     const NewItem ={
         id: (items.id),
-        name: name
+        name: name,
+        trip: trip
     }
-    console.log("NewItem: ", NewItem);
+    // console.log("NewItem: ", NewItem); // NewItem is indeed being created...
 
     function handleSubmit(e){
         e.preventDefault();
@@ -21,6 +23,7 @@ function NewItem({onAddItem}){
           },
           body: JSON.stringify({
             name: name,
+            trip: trip,
           }),
         })
         .then((r) => r.json())
@@ -28,6 +31,18 @@ function NewItem({onAddItem}){
           setItems([...items, NewItem]);
         });
         setName("");
+
+        // update Trips setTrips(updatedTrips)
+        handleUpdateTrip(trip);
+      }
+
+      function handleUpdateTrip(updatedTrip){
+        const updatedTrips = trips.map((trip) => trip.id === updatedTrip.id ? updatedTrip : trip)
+       setTrips(updatedTrips); // update the Array
+    }
+
+      function handleSelectChange(e){
+          e.preventDefault();
       }
 
     return(
@@ -36,8 +51,14 @@ function NewItem({onAddItem}){
                   <input type="text" name="name"
                   autoComplete="off" placeholder="name"
                   value={name} onChange={(e) => setName(e.target.value)} /> {/* Removes need for "function handleNameChange(e){}" */}
+                  <select>
+                      <option key={trip.id} value={trip.id}></option>
+                      {trips.map((trip) => {
+                          <option value="#{trip.name}">{trip.name}</option>
+                      })}
+                  </select>
                 </b></label></div>
-                <button type="submit">Submit Trip</button>
+                <button type="submit">Submit Item</button>
               </form>
     );
 }

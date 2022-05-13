@@ -1,15 +1,11 @@
 function Item({item, onDeleteItem}){
     
-    function deleteItem(){
+    function deleteItem({item}){
         fetch(`http://localhost:9292/item/${item.id}`, { // DELETE fetch request.
         method: "DELETE",
     })
     .then((r) => r.json())
     .then(() => onDeleteItem(item)); // Invoke the onDeleteItem function with this fetch request.
-    }
-
-    function updateItem(){
-        // 
     }
 
     return(

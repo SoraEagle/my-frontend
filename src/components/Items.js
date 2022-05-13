@@ -5,26 +5,6 @@ import NewItem from "./NewItem";
 
 function Items(){
     const {items, setItems} = useContext(ItemsContext);
-    const [name, setName] = useState('');
-    const [trip, setTrip] = useState('');
-
-    // const newItem = {
-    //   // 
-    // }
-
-    function handleNameChange(e){
-      setName(e.target.value);
-    }
-
-    function handleTripChange(e){
-      setTrip(e.target.value);
-    }
-
-    function handleSubmit(e){
-      e.preventDefault();
-      // fetch("http://localhost:9292/items",
-      // )
-    }
 
     function onDeleteItem(deletedItem){
       const updatedItems = items.filter((item) => item.id !== deletedItem.id);
@@ -46,19 +26,7 @@ function Items(){
                 Submit New Item:
               </h2>
 
-              {/* <NewItem /> */}
-
-              <form onSubmit={handleSubmit}>
-                <div><label><b>Name: 
-                  <input type="text" name="name" placeholder="name"
-                  autoComplete="off" onChange={handleNameChange} />
-                </b></label></div>
-                <div><label><b>Trip: 
-                  <input type="text" name="trip" placeholder="trip"
-                  autoComplete="off" onChange={handleTripChange} />
-                </b></label></div>
-                <button type="submit">Submit Item</button>
-              </form>
+              <NewItem items={items} setItems={setItems} />
 
               <h2 style={{
                 borderBottom: "2px solid black",

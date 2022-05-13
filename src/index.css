@@ -30,3 +30,8 @@ code {
 #left {
   text-align: left;
 }
+
+#scroll {
+  overflow-x: hidden;
+  overflow-y: auto;
+}

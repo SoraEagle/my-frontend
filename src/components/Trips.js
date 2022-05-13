@@ -9,16 +9,12 @@ function Trips(){
     if(trips.length === 0) return(
         <div>
           <h1>You have no trips!</h1>
-          {/* <img src="https://miro.medium.com/max/1280/1*-Nr0OP_Nu7b2NPrcgJ1SuA.png" alt="null"/> */}
           </div>);
-          else console.log("Trips: ", trips);
-
-          return(
+          else return(
             <div id="trips">
               <h2 style={{borderBottom: "2px solid black"}}>
                 Make a Trip:
               </h2>
-
               <NewTrip trips={trips} setTrips={setTrips} />
 
               <h2 style={{
