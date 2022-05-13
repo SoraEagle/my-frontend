@@ -3,7 +3,7 @@ import {TripsContext} from "./context/myTrips";
 import Trip from "./Trip";
 import NewTrip from "./NewTrip";
 
-function Trips({onAddTrip}){
+function Trips(){
     const {trips, setTrips} = useContext(TripsContext);
     
     if(trips.length === 0) return(
@@ -19,7 +19,7 @@ function Trips({onAddTrip}){
                 Make a Trip:
               </h2>
 
-              <NewTrip onAddTrip={onAddTrip} trips={trips} setTrips={setTrips} />
+              <NewTrip trips={trips} setTrips={setTrips} />
 
               <h2 style={{
                 borderBottom: "2px solid black",

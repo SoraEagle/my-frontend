@@ -1,19 +1,20 @@
 import React, {useContext, useState} from 'react';
+import { ItemsContext } from './context/myItems';
 import {TripsContext} from "./context/myTrips";
 
-function NewTrip(){
-    const {trips, setTrips} = useContext(TripsContext);
+function NewItem({onAddItem}){
+    const {items, setItems} = useContext(TripsContext);
     const [name, setName] = useState('');
 
-    const newTrip ={
-        id: (trips.id),
+    const NewItem ={
+        id: (items.id),
         name: name
     }
-    console.log("newTrip: ", newTrip);
+    console.log("NewItem: ", NewItem);
 
     function handleSubmit(e){
         e.preventDefault();
-        fetch("http://localhost:9292/trips", {
+        fetch("http://localhost:9292/items", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -23,8 +24,8 @@ function NewTrip(){
           }),
         })
         .then((r) => r.json())
-        .then((newTrip) => {
-          setTrips([...trips, newTrip]);
+        .then((NewItem) => {
+          setItems([...items, NewItem]);
         });
         setName("");
       }
@@ -41,4 +42,4 @@ function NewTrip(){
     );
 }
 
-export default NewTrip;
+export default NewItem;

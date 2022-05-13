@@ -1,6 +1,7 @@
 import React, {useContext, useState} from "react";
 import {ItemsContext} from "./context/myItems";
 import Item from "./Item";
+import NewItem from "./NewItem";
 
 function Items(){
     const {items, setItems} = useContext(ItemsContext);
@@ -45,12 +46,16 @@ function Items(){
                 Submit New Item:
               </h2>
 
+              {/* <NewItem /> */}
+
               <form onSubmit={handleSubmit}>
                 <div><label><b>Name: 
-                  <input type="text" name="name" placeholder="name" onChange={handleNameChange} />
+                  <input type="text" name="name" placeholder="name"
+                  autoComplete="off" onChange={handleNameChange} />
                 </b></label></div>
                 <div><label><b>Trip: 
-                  <input type="text" name="trip" placeholder="trip" onChange={handleTripChange} />
+                  <input type="text" name="trip" placeholder="trip"
+                  autoComplete="off" onChange={handleTripChange} />
                 </b></label></div>
                 <button type="submit">Submit Item</button>
               </form>
