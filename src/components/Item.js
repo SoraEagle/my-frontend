@@ -1,4 +1,9 @@
-function Item({item, onDeleteItem}){
+function Item({item, items, setItems}){
+
+    function onDeleteItem(deletedItem){
+        const updatedItems = items.filter((item) => item.id !== deletedItem.id);
+        setItems(updatedItems);
+      }
     
     function deleteItem({item}){
         fetch(`http://localhost:9292/item/${item.id}`, { // DELETE fetch request.
@@ -14,8 +19,7 @@ function Item({item, onDeleteItem}){
             paddingBottom: "10px",
             marginBottom: "12px"
           }}>
-              <p>#{item.name}</p>
-              <button>Update</button>
+              <p>{item.name}</p>
               <button onClick={deleteItem}>Delete</button>
         </div>
     );

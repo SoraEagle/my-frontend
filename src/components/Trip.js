@@ -11,7 +11,7 @@ function Trip({trip}){
         method: "DELETE",
     })
     .then((r) => r.json())
-    .then(() => onDeleteTrip(trip)); // Invoke the onDeleteItem function with this fetch request.
+    .then(() => onDeleteTrip(trip)); // Invoke the onDeleteTrip function with this fetch request.
     }
 
     function onDeleteTrip(deletedTrip){

@@ -5,14 +5,10 @@ import NewTrip from "./NewTrip";
 
 function Trips(){
     const {trips, setTrips} = useContext(TripsContext);
-    
-    if(trips.length === 0) return(
-        <div>
-          <h1>You have no trips!</h1>
-          </div>);
-          else return(
-            <div id="trips">
-              <h2 style={{borderBottom: "2px solid black"}}>
+
+    return (
+      <div id="trips">
+        <h2 style={{borderBottom: "2px solid black"}}>
                 Make a Trip:
               </h2>
               <NewTrip trips={trips} setTrips={setTrips} />
@@ -25,11 +21,14 @@ function Trips(){
                 My Trips:
               </h2>
 
-              {trips? (trips.map((trip) => {return <h5 key={trip.id}><Trip trip={trip} /></h5>})
+              {(trips.length === 0)? (
+                <h1>You have no trips!</h1>
               ) : (
-              <h2>Loading trip data...</h2>)}
-            </div> 
-          );
+                <div>
+                  {trips.map((trip) => {return <h5 key={trip.id}><Trip trip={trip} /></h5>})}
+                </div>)}
+      </div>
+    );
 }
 
 export default Trips;

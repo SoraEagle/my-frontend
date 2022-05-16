@@ -1,45 +1,39 @@
-import React, {useContext, useState} from "react";
+import React, {useContext} from "react";
 import {ItemsContext} from "./context/myItems";
 import Item from "./Item";
 import NewItem from "./NewItem";
 
 function Items(){
     const {items, setItems} = useContext(ItemsContext);
-
-    function onDeleteItem(deletedItem){
-      const updatedItems = items.filter((item) => item.id !== deletedItem.id);
-      setItems(updatedItems);
-    }
     
-    if(Item.length === 0) return(
-        <div>
-          <p>You have no items for your trips!</p>
-          <img src="https://miro.medium.com/max/1280/1*-Nr0OP_Nu7b2NPrcgJ1SuA.png" alt="null"/>
-          </div>);
-          else console.log("Items: ", Items);
-
-          return(
-            <div id="items">
-              <h2 style={{
+    return(
+      <div id="items">
+        <h2 style={{
                 borderBottom: "2px solid black"
               }}>
                 Submit New Item:
               </h2>
+        <NewItem items={items} setItems={setItems} />
 
-              <NewItem items={items} setItems={setItems} />
-
-              <h2 style={{
+        <h2 style={{
                 borderBottom: "2px solid black",
                 marginBottom: "12px",
                 marginTop: "12px",
               }}>
                 My Items:
               </h2>
-              {items.map((item) => {
-                return <h5 key={item.id}><Item item={item} onDeleteItem={onDeleteItem} /></h5>
-              })}
-            </div> 
-          );
+
+        {(items.length === 0)? (
+          <div>
+          <h1>You have no items for your trips!</h1>
+          <img src="https://miro.medium.com/max/1280/1*-Nr0OP_Nu7b2NPrcgJ1SuA.png" alt="null"/>
+          </div>
+          ) : (
+            <div id="items">
+              {items.map((item) => {return <h5 key={item.id}><Item item={item} items={items} setItems={setItems} /></h5>})}
+            </div>)}
+      </div>
+    );
 }
 
 export default Items;
