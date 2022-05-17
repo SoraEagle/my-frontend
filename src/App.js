@@ -7,6 +7,7 @@ import NavBar from './components/NavBar';
 import Home from './components/Home';
 import Trips from './components/Trips';
 import Items from './components/Items';
+import Footer from './components/Footer';
 
 function App(){
   return(
@@ -17,24 +18,20 @@ function App(){
       textAlign: "center"
     }}>
 
-      <body><div id='content'>
+     
       <TripsProvider><ItemsProvider>
         <NavBar />
+        <body><div id='content'>
         <Routes>
           <Route path="/trips" element={<Trips />}></Route>
           <Route path="/items" element={<Items />}></Route>
           <Route exact path="/" element={<Trips />}></Route>
         </Routes>
+        </div></body>
       </ItemsProvider></TripsProvider>
-      </div></body>
+      
 
-      <footer id="footer" style={{
-          textAlign: "center"
-        }}>
-          <p id="left"><a href="#">Top of Page</a></p>
-          <p>@2022 Ruby Faker Inc.</p>
-          <p>All rights reserved.</p>
-        </footer>
+      <Footer />
     </div>
   );
 }

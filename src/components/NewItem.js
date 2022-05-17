@@ -46,6 +46,8 @@ function NewItem({onAddItem, items, setItems}){
           e.preventDefault();
       }
 
+      console.log(trips);
+
     return(
         <form onSubmit={handleSubmit}>
                 <div><label><b>Name: </b>
@@ -58,7 +60,7 @@ function NewItem({onAddItem, items, setItems}){
                   <select onChange={handleSelectChange}>
                       <option></option>
                       {trips.map((trip) => {
-                          <option key={trip.id} value="#{trip.name}">{trip.name}</option>
+                          return <option key={trip.id} value="#{trip.name}">{trip.name}</option>
                       })}
                   </select>
                   </label></div>

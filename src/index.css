@@ -25,19 +25,13 @@ code {
   min-height: 100vh;
 }
 
-#content-wrap {
-  padding-bottom: 2.5rem;    /* Footer height */
-}
-
 #footer {
   flex-shrink: 0;
+  flex: 1 0 auto;
   background-color: coral;
-  /* position: absolute; */
   /* bottom: 0; */
   width: 100%;
-  /* padding: 20px; */
-  /* height: 120px; */
-  padding-top: 10px;
+  padding-top: 20px;
   border-top: 2px solid black;
   border-bottom: 2px solid black;
 }
@@ -48,19 +42,10 @@ code {
   margin-bottom: 100%;
 }
 
-#left {
-  text-align: left;
-}
-
 #item {
   border-top: 2px solid black;
-  background: linear-gradient(to bottom, aqua, coral, firebrick); /* linear-gradient can only handle up to 7 colors... */
+  background: linear-gradient(to bottom, aqua, coral, firebrick);
   /* background: linear-gradient(to bottom, red, orange, yellow, green, blue, indigo, violet); */
   border-bottom: 2px solid black;
   margin: 0;
 }
-
-/* #scroll {
-  overflow-x: hidden;
-  overflow-y: auto;
-} */
