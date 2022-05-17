@@ -1,10 +1,12 @@
 import React, {useContext} from "react";
 import {ItemsContext} from "./context/myItems";
+import { TripsContext } from "./context/myTrips";
 import Item from "./Item";
 import NewItem from "./NewItem";
 
 function Items(){
     const {items, setItems} = useContext(ItemsContext);
+    const {trips, setTrips} = useContext(TripsContext);
     
     return(
       <div id="items">
@@ -30,7 +32,7 @@ function Items(){
           </div>
           ) : (
             <div id="items">
-              {items.map((item) => {return <h5 key={item.id}><Item item={item} /></h5>})}
+              {items.map((item) => {return <h5 key={item.id}><Item item={item} trips={trips} /></h5>})}
             </div>)}
       </div>
     );

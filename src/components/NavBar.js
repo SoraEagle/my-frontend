@@ -9,10 +9,7 @@ const linkStyles = {
     margin: "0 6px 6px",
     background: "blue",
     textDecoration: "underline",
-    borderLeft: "2px solid black",
-    borderBottom: "2px solid black",
-    borderRight: "2px solid black",
-    borderTop: "2px solid black",
+    border: "2px solid black",
     color: "white"
   };
 
