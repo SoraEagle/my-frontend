@@ -10,14 +10,14 @@ import Items from './components/Items';
 
 function App(){
   return(
-    <div className="App"
+    <div id="App"
     style={{
       // backgroundColor: "aqua",
       height: "100vh",
       textAlign: "center"
     }}>
 
-      <body><div class='content'>
+      <body><div id='content'>
       <TripsProvider><ItemsProvider>
         <NavBar />
         <Routes>

@@ -32,8 +32,11 @@ code {
 #footer {
   flex-shrink: 0;
   background-color: coral;
+  /* position: absolute; */
+  /* bottom: 0; */
   width: 100%;
   /* padding: 20px; */
+  /* height: 120px; */
   padding-top: 10px;
   border-top: 2px solid black;
   border-bottom: 2px solid black;
@@ -51,8 +54,13 @@ code {
 
 #item {
   border-top: 2px solid black;
-  /* background: linear-gradient(to bottom, aqua, coral, firebrick); */
-  background: linear-gradient(to bottom, red, orange, yellow, green, blue, indigo, violet);
+  background: linear-gradient(to bottom, aqua, coral, firebrick); /* linear-gradient can only handle up to 7 colors... */
+  /* background: linear-gradient(to bottom, red, orange, yellow, green, blue, indigo, violet); */
   border-bottom: 2px solid black;
   margin: 0;
 }
+
+/* #scroll {
+  overflow-x: hidden;
+  overflow-y: auto;
+} */
