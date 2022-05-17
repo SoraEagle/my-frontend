@@ -1,12 +1,17 @@
-function Item({item, items, setItems}){
+import React, {useContext} from 'react';
+import {ItemsContext} from './context/myItems';
+
+function Item({item}){
+    const {items, setItems} = useContext(ItemsContext);
 
     function onDeleteItem(deletedItem){
         const updatedItems = items.filter((item) => item.id !== deletedItem.id);
         setItems(updatedItems);
-      }
+    }
     
-    function deleteItem({item}){
-        fetch(`http://localhost:9292/item/${item.id}`, { // DELETE fetch request.
+    function deleteItem(){
+        console.log(item);
+        fetch(`http://localhost:9292/items/${item.id}`, { // DELETE fetch request.
         method: "DELETE",
     })
     .then((r) => r.json())
@@ -15,11 +20,10 @@ function Item({item, items, setItems}){
 
     return(
         <div id="item" style={{
-            borderBottom: "2px solid black",
             paddingBottom: "10px",
             marginBottom: "12px"
           }}>
-              <p>{item.name}</p>
+              <h2>{item.name}</h2>
               <button onClick={deleteItem}>Delete</button>
         </div>
     );

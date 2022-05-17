@@ -29,6 +29,7 @@ function NewItem({onAddItem, items, setItems}){
         .then((r) => r.json())
         .then((NewItem) => {
           setItems([...items, NewItem]);
+          console.log([...items, NewItem]);
         });
         setName("");
 
@@ -47,17 +48,21 @@ function NewItem({onAddItem, items, setItems}){
 
     return(
         <form onSubmit={handleSubmit}>
-                <div><label><b>Name: 
+                <div><label><b>Name: </b>
                   <input type="text" name="name"
                   autoComplete="off" placeholder="name"
                   value={name} onChange={(e) => setName(e.target.value)} /> {/* Removes need for "function handleNameChange(e){}" */}
-                  <select>
-                      <option key={trip.id} value={trip.id}></option>
+                  </label>
+
+                  <label><b>Trip: </b>
+                  <select onChange={handleSelectChange}>
+                      <option></option>
                       {trips.map((trip) => {
-                          <option value="#{trip.name}">{trip.name}</option>
+                          <option key={trip.id} value="#{trip.name}">{trip.name}</option>
                       })}
                   </select>
-                </b></label></div>
+                  </label></div>
+                
                 <button type="submit">Submit Item</button>
               </form>
     );

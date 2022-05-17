@@ -3,12 +3,17 @@ import {NavLink} from "react-router-dom";
 
 const linkStyles = {
     display: "inline-block",
-    height: "50px",
+    // height: "50px",
+    flex: "1 0 auto",
     width: "50px",
     // padding: "12px",
     margin: "0 6px 6px",
-    // background: "blue",
+    background: "blue",
     textDecoration: "underline",
+    borderLeft: "2px solid black",
+    borderBottom: "2px solid black",
+    borderRight: "2px solid black",
+    borderTop: "2px solid black",
     color: "white"
   };
 
@@ -26,7 +31,7 @@ function NavBar(){
             {/* <NavLink style={linkStyles} to="/">
                 Home Page
             </NavLink> */}
-            <NavLink style={linkStyles} to="/trips">
+            <NavLink id="button" style={linkStyles} to="/trips">
                 My Trips
             </NavLink>
             <NavLink style={linkStyles} to="/items">

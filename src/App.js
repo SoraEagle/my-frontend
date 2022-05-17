@@ -9,20 +9,15 @@ import Trips from './components/Trips';
 import Items from './components/Items';
 
 function App(){
-  // useEffect(() => {
-  //   fetch("http://localhost:9292/trips")
-  //     .then((r) => r.json())
-  //     .then((trips) => setTrips(trips));
-  // }, []);
-
   return(
-    <div className="App" id='scroll'
+    <div className="App"
     style={{
-      backgroundColor: "aqua",
+      // backgroundColor: "aqua",
       height: "100vh",
       textAlign: "center"
     }}>
 
+      <body><div class='content'>
       <TripsProvider><ItemsProvider>
         <NavBar />
         <Routes>
@@ -31,14 +26,9 @@ function App(){
           <Route exact path="/" element={<Trips />}></Route>
         </Routes>
       </ItemsProvider></TripsProvider>
+      </div></body>
 
       <footer id="footer" style={{
-          backgroundColor: "coral",
-          borderBottom: "2px solid black",
-          marginBottom: "12px",
-          marginTop: "12px",
-          borderTop: "2px solid black",
-          paddingTop: "10px",
           textAlign: "center"
         }}>
           <p id="left"><a href="#">Top of Page</a></p>

@@ -30,7 +30,7 @@ function Items(){
           </div>
           ) : (
             <div id="items">
-              {items.map((item) => {return <h5 key={item.id}><Item item={item} items={items} setItems={setItems} /></h5>})}
+              {items.map((item) => {return <h5 key={item.id}><Item item={item} /></h5>})}
             </div>)}
       </div>
     );

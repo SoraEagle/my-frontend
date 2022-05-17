@@ -30,11 +30,11 @@ function NewTrip(){
 
     return(
         <form onSubmit={handleSubmit}>
-                <div><label><b>Name: 
+                <div><label><b>Name: </b>
                   <input type="text" name="name"
                   autoComplete="off" placeholder="name"
                   value={name} onChange={(e) => setName(e.target.value)} /> {/* Removes need for "function handleNameChange(e){}" */}
-                </b></label></div>
+                </label></div>
                 <button type="submit">Submit Trip</button>
               </form>
     );
