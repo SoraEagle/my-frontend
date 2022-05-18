@@ -1,10 +1,14 @@
 import React, {useContext, useState} from "react";
 import {TripsContext} from "./context/myTrips";
+import {ItemsContext} from "./context/myItems";
 import EditTrip from "./EditTrip";
 
 function Trip({trip}){
+  const {items, setItems} = useContext(ItemsContext);
     const {trips, setTrips} = useContext(TripsContext);
     const [isEditing, setIsEditing] = useState(false);
+
+    // console.log(items); // items is coming through...
 
     function deleteTrip(){
         fetch(`http://localhost:9292/trips/${trip.id}`, { // DELETE fetch request.
@@ -19,15 +23,14 @@ function Trip({trip}){
       setTrips(updatedTrips);
     }
 
-    function handleUpdateTrip(updatedTrip){
-        // Select specific Trip(use the trip.id) when clicking the Update button, override2 <h2> into <input> tags, and vice versa...
+    function handleUpdateTrip(updatedTrip){ // Select specific Trip when clicking the Update button, override2 <h2> into <input> tags, vice versa...
         setIsEditing(false);
         const updatedTrips = trips.map((trip) => trip.id === updatedTrip.id ? updatedTrip : trip)
-       setTrips(updatedTrips); // update the Array
+       setTrips(updatedTrips); // updates the Array
     }
 
     return(
-        <div id="item" style={{
+        <div id="trip" style={{
             borderBottom: "2px solid black",
             paddingBottom: "10px",
             marginBottom: "12px"
@@ -39,12 +42,15 @@ function Trip({trip}){
           onUpdateTrip={handleUpdateTrip}
         />
       ) : (
-        <h2>{trip.name}</h2>
+        <h2 id="text">{trip.name}</h2>
       )}
-                <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
+                <button id="button" onClick={() => setIsEditing((isEditing) => !isEditing)}>
                     Update
                 </button>
-                <button onClick={deleteTrip}>Delete</button>
+                <button id="button" onClick={deleteTrip}>Delete</button>
+                <h3>Items: </h3>
+                {console.log(items)}
+                {items.map((item) => item.trip_id === trip.id ? null : <h4>{item.name}</h4>)}
               </div>
         </div>
     );

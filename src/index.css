@@ -29,8 +29,7 @@ code {
   flex-shrink: 0;
   flex: 1 0 auto;
   background-color: coral;
-  /* bottom: 0; */
-  width: 100%;
+  /* width: 100%; */
   padding-top: 20px;
   border: 2px solid black;
 }
@@ -47,4 +46,19 @@ code {
   /* background: linear-gradient(to bottom, red, orange, yellow, green, blue, indigo, violet); */
   border-bottom: 2px solid black;
   margin: 0;
+}
+
+#trip {
+  display: flex;
+  flex-flow: column wrap;
+  flex-shrink: 1;
+  background: linear-gradient(to bottom, aqua, coral, firebrick);
+}
+
+#trip, text {
+  order: 1;
+}
+
+#trip, button {
+  order: 2;
 }

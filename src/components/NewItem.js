@@ -46,7 +46,7 @@ function NewItem({onAddItem, items, setItems}){
   function handleSelectChange(e){
     e.preventDefault();
   }
-  // console.log(trips);
+  console.log(trips);
 
   return(
     <form onSubmit={handleSubmit}>
