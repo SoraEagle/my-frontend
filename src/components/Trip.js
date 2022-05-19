@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {TripsContext} from "./context/myTrips";
 import {ItemsContext} from "./context/myItems";
 import EditTrip from "./EditTrip";
@@ -8,7 +8,7 @@ function Trip({trip}){
     const {trips, setTrips} = useContext(TripsContext);
     const [isEditing, setIsEditing] = useState(false);
 
-    // console.log(items); // items is coming through...
+    // console.log(items);
 
     function deleteTrip(){
         fetch(`http://localhost:9292/trips/${trip.id}`, { // DELETE fetch request.
@@ -16,6 +16,7 @@ function Trip({trip}){
     })
     .then((r) => r.json())
     .then(() => onDeleteTrip(trip)); // Invoke the onDeleteTrip function with this fetch request.
+    console.log(trip.items);
     }
 
     function onDeleteTrip(deletedTrip){
@@ -30,7 +31,7 @@ function Trip({trip}){
     }
 
     return(
-        <div id="trip" style={{
+        <div id="item" style={{
             borderBottom: "2px solid black",
             paddingBottom: "10px",
             marginBottom: "12px"
@@ -49,8 +50,9 @@ function Trip({trip}){
                 </button>
                 <button id="button" onClick={deleteTrip}>Delete</button>
                 <h3>Items: </h3>
-                {console.log(items)}
-                {items.map((item) => item.trip_id === trip.id ? null : <h4>{item.name}</h4>)}
+                {console.log("Items: ", items)}
+                {items.map((item) => item.trip_id === trip.id ? (<h4 key={item.id}>{item.name}</h4>) : (null))}
+                {console.log("Trip ID: ", trip.id)}
               </div>
         </div>
     );

@@ -10,7 +10,7 @@ function Item({item}){
     }
     
     function deleteItem(){
-        console.log(item);
+        console.log("Item: ", item);
         fetch(`http://localhost:9292/items/${item.id}`, { // DELETE fetch request.
         method: "DELETE",
     })

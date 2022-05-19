@@ -1,19 +1,20 @@
 import React, {useContext, useState} from 'react';
-import { ItemsContext } from './context/myItems';
 import {TripsContext} from "./context/myTrips";
 
-function NewItem({onAddItem, items, setItems}){
-  // const {items, setItems} = useContext(ItemsContext);
+function NewItem({items, setItems}){
   const {trips, setTrips} = useContext(TripsContext);
-  const [trip, setTrip] = useState('');
+  const [tripId, setTripId] = useState();
   const [name, setName] = useState('');
 
-  const NewItem ={
-      id: (items.id),
-      name: name,
-      trip: trip
-  }
-  // console.log("NewItem: ", NewItem); // NewItem is indeed being created...
+  // const newItem ={
+  //     name: name,
+  //     trip_id: trips.id
+  // }
+  
+  // console.log("NewItem: ", newItem); // NewItem is indeed being created...
+  console.log("Items: ", items); // 
+
+  items.map((item) => {console.log("Item IDs:", item.id)});
 
   function handleSubmit(e){
     e.preventDefault();
@@ -24,29 +25,32 @@ function NewItem({onAddItem, items, setItems}){
       },
       body: JSON.stringify({
         name: name,
-        trip: trip,
+        trip_id: tripId,
       }),
     })
     .then((r) => r.json())
-    .then((NewItem) => {
-      setItems([...items, NewItem]);
-      console.log([...items, NewItem]);
+    .then((data) => {
+      setItems([...items, data]);
+      // console.log("Data:", data);
+      console.log("New list", [...items, data]);
+      trips.map((trip) => {console.log("Trip: ", trip)})
+      handleUpdateTrip(tripId);
     });
     setName("");
-
-    // update Trips setTrips(updatedTrips)
-    handleUpdateTrip(trip);
+    // handleUpdateTrip(trip);
   }
 
-  function handleUpdateTrip(updatedTrip){
-    const updatedTrips = trips.map((trip) => trip.id === updatedTrip.id ? updatedTrip : trip)
-   setTrips(updatedTrips); // update the Array
+  function handleUpdateTrip(updatedTripId){
+    const updatedTrips = trips.map((trip) => tripId === updatedTripId ? updatedTripId : trip)
+    setTrips(updatedTrips); // update the Array
   }
 
   function handleSelectChange(e){
     e.preventDefault();
+    console.log("Selected: ", e.target.value);
+    setTripId(e.target.value);
   }
-  console.log(trips);
+  console.log("Trips: ", trips);
 
   return(
     <form onSubmit={handleSubmit}>
@@ -57,10 +61,10 @@ function NewItem({onAddItem, items, setItems}){
               </label>
 
               <label><b>Trip: </b>
-              <select onChange={handleSelectChange}>
+              <select value={tripId} onChange={handleSelectChange}>
                   <option></option>
                   {trips.map((trip) => {
-                      return <option key={trip.id} value="#{trip.name}">{trip.name}</option>
+                      return <option key={trip.id} value={trip.id}>{trip.name}</option>
                   })}
               </select>
               </label></div>
