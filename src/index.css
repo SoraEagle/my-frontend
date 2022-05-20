@@ -6,8 +6,6 @@ body {
   display: flex;
   flex-direction: column;
   background: linear-gradient(to bottom, aqua, coral);
-  /* background-repeat: no-repeat; */
-  /* background-size: contain; */
   background-attachment: fixed;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
