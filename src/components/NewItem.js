@@ -6,12 +6,6 @@ function NewItem({items, setItems}){
   const [tripId, setTripId] = useState();
   const [name, setName] = useState('');
 
-  // const newItem ={
-  //     name: name,
-  //     trip_id: trips.id
-  // }
-  
-  // console.log("NewItem: ", newItem); // NewItem is indeed being created...
   console.log("Items: ", items); // 
 
   items.map((item) => {console.log("Item IDs:", item.id)});
@@ -37,7 +31,6 @@ function NewItem({items, setItems}){
       handleUpdateTrip(tripId);
     });
     setName("");
-    // handleUpdateTrip(trip);
   }
 
   function handleUpdateTrip(updatedTripId){

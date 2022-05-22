@@ -27,9 +27,7 @@ code {
 
 #footer {
   flex-shrink: 0;
-  /* flex: 1 0 auto; */
   background-color: coral;
-  /* width: 100%; */
   padding-top: 20px;
   border: 2px solid black;
 }
@@ -39,13 +37,19 @@ code {
   padding: 20px;
   background-repeat: no-repeat;
   background-size: contain;
-  /* margin-bottom: 100%; */
 }
 
 #item {
   border-top: 2px solid black;
   background: linear-gradient(to bottom, aqua, coral, firebrick);
-  /* background: linear-gradient(to bottom, red, orange, yellow, green, blue, indigo, violet); */
   border-bottom: 2px solid black;
   margin: 0;
+}
+
+#nav {
+  background-color: firebrick;
+  border-bottom: 2px solid black;
+  margin-bottom: 12px;
+  width: 100%;
+  height: 10%;
 }

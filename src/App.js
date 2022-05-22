@@ -1,10 +1,9 @@
 import './App.css';
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {Routes, Route} from "react-router-dom";
 import {TripsProvider} from './components/context/myTrips';
 import {ItemsProvider} from './components/context/myItems';
 import NavBar from './components/NavBar';
-// import Home from './components/Home';
 import Trips from './components/Trips';
 import Items from './components/Items';
 import Footer from './components/Footer';

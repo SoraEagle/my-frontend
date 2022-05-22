@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useState} from "react";
 import {TripsContext} from "./context/myTrips";
 import {ItemsContext} from "./context/myItems";
 import EditTrip from "./EditTrip";
@@ -7,7 +7,6 @@ function Trip({trip}){
   const {items, setItems} = useContext(ItemsContext);
     const {trips, setTrips} = useContext(TripsContext);
     const [isEditing, setIsEditing] = useState(false);
-
     // console.log(items);
 
     function deleteTrip(){
