@@ -9,8 +9,8 @@ which is then displayed, according to which Item belongs to what Trip.
 The Trip objects have full CRUD capability, but currently the Items can only be created and deleted.
 
 ## Visuals
-A video demonstration of this application:
-<!-- YouTube video here -->
+[My Demonstration]https://www.youtube.com/watch?v=unShpDKaARg
+
 ## Installation
 To install this **entire** application, you will need to **fork and clone** these two repositories:
 
