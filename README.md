@@ -26,7 +26,9 @@ You can start your server with
 ```
 bundle exec rake server
 ```
-This will run your server on port [http://localhost:9292](http://localhost:9292).
+This will run your server on port 
+
+To view some of the JSON data in the database, you can use either the [Trips](http://localhost:9292/trips) or [Items](http://localhost:9292/items) link.
 ### Run Frontent (Client) Side
 **NOTICE**: Before running the frontend server for the first time, make sure to first run
 ```
